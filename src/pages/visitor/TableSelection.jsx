@@ -87,35 +87,34 @@ export default function TableSelection() {
           <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-4 gap-2">
           {tables.map((table) => (
             <button
               key={table.id}
               disabled={table.status === 'occupied'}
               onClick={() => handleTableClick(table)}
-              className={`relative aspect-square rounded-xl p-6 flex flex-col justify-between items-start text-left transition-all active:scale-95 group ${
+              className={`relative aspect-square rounded-xl p-2 flex flex-col justify-between items-center text-center transition-all active:scale-95 group ${
                 table.status === 'occupied' 
-                  ? 'bg-surface-container-high opacity-60 cursor-not-allowed' 
-                  : selectedTable === table.name 
-                    ? 'bg-surface-container-lowest shadow-sm border-2 border-primary' 
-                    : 'bg-surface-container-lowest shadow-sm hover:bg-surface-container-low'
-              }`}
-            >
-              <div className="flex justify-between w-full">
-                <span className={`text-2xl font-bold font-headline ${selectedTable === table.name ? 'text-primary' : 'text-on-surface'}`}>{table.name}</span>
-                <span className={`material-symbols-outlined ${selectedTable === table.name ? 'text-primary' : 'text-outline-variant'} ${table.status === 'occupied' ? 'group-hover:text-secondary' : 'group-hover:text-primary'} transition-colors`}>
-                  {table.status === 'occupied' ? 'person' : selectedTable === table.name ? 'check_circle' : 'table_restaurant'}
-                </span>
-              </div>
-              <div>
-                <span className="block text-sm font-bold text-on-surface">Meja {table.name}</span>
-                <span className={`text-[10px] font-bold uppercase tracking-widest ${table.status === 'occupied' ? 'text-secondary' : 'text-primary'}`}>
-                  {table.status === 'occupied' ? 'Terisi' : 'Tersedia'}
-                </span>
-              </div>
-            </button>
-          ))}
-        </div>
+                   ? 'bg-surface-container-high opacity-60 cursor-not-allowed' 
+                   : selectedTable === table.name 
+                     ? 'bg-surface-container-lowest shadow-sm border-2 border-primary' 
+                     : 'bg-surface-container-lowest shadow-sm hover:bg-surface-container-low'
+               }`}
+             >
+               <div className="flex flex-col items-center gap-1">
+                 <span className={`text-lg font-bold font-headline ${selectedTable === table.name ? 'text-primary' : 'text-on-surface'}`}>{table.name}</span>
+                 <span className={`material-symbols-outlined text-sm ${selectedTable === table.name ? 'text-primary' : 'text-outline-variant'}`}>
+                   {table.status === 'occupied' ? 'person' : selectedTable === table.name ? 'check_circle' : 'table_restaurant'}
+                 </span>
+               </div>
+               <div className="mt-auto">
+                 <span className={`text-[8px] font-bold uppercase tracking-tighter ${table.status === 'occupied' ? 'text-secondary' : 'text-primary'}`}>
+                   {table.status === 'occupied' ? 'Terisi' : 'Tersedia'}
+                 </span>
+               </div>
+             </button>
+           ))}
+         </div>
       )}
 
       <div className="fixed bottom-0 left-0 w-full p-6 pb-24 z-40 bg-gradient-to-t from-background to-transparent">

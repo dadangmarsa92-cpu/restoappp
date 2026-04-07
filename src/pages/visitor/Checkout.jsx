@@ -6,7 +6,7 @@ import { db } from '../../firebase';
 
 export default function Checkout() {
   const navigate = useNavigate();
-  const { cart, updateQuantity, tableNumber, userInfo, clearCart } = useStore();
+  const { cart, updateQuantity, tableNumber, userInfo, resetOrder } = useStore();
 
   const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
   const tax = total * 0.1;
@@ -24,7 +24,7 @@ export default function Checkout() {
         status: 'PENDING',
         createdAt: new Date().toISOString()
       });
-      clearCart();
+      resetOrder();
       navigate(`/order/${orderRef.id}`);
     } catch (err) {
       alert('Gagal mengirim pesanan. Periksa koneksi Anda.');

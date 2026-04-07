@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../../store/useStore';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
 
@@ -12,8 +12,9 @@ export default function Menu() {
   const [searchQuery, setSearchQuery] = useState('');
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showCartModal, setShowCartModal] = useState(false);
   const navigate = useNavigate();
-  const { cart, addToCart } = useStore();
+  const { cart, addToCart, updateQuantity, removeFromCart } = useStore();
 
   useEffect(() => {
     const fetchMenu = async () => {
@@ -109,7 +110,7 @@ export default function Menu() {
       )}
 
       {cart.length > 0 && (
-        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 w-[90%] max-w-sm z-40">
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 w-[90%] max-w-sm z-40">
           <motion.div
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -126,15 +127,106 @@ export default function Menu() {
               </div>
             </div>
             <button 
-              onClick={() => navigate('/checkout')}
+              onClick={() => setShowCartModal(true)}
               className="bg-primary text-on-primary px-6 py-3 rounded-2xl font-bold text-sm flex items-center gap-2 hover:scale-105 active:scale-95 transition-all"
             >
-              Bayar
+              Pesan Sekarang
               <span className="material-symbols-outlined text-sm">arrow_forward</span>
             </button>
           </motion.div>
         </div>
       )}
+
+      <AnimatePresence>
+        {showCartModal && (
+          <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center sm:p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowCartModal(false)}
+              className="absolute inset-0 bg-on-surface/40 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ y: '100%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: '100%', opacity: 0 }}
+              className="bg-surface w-full max-w-md rounded-t-[3rem] sm:rounded-[3rem] p-8 shadow-2xl relative max-h-[85vh] overflow-hidden flex flex-col"
+            >
+              <div className="flex justify-between items-center mb-8">
+                <div>
+                  <h3 className="text-2xl font-extrabold font-headline mb-1">Keranjang Belanja</h3>
+                  <p className="text-xs text-secondary font-medium uppercase tracking-widest">Kamu memesan {cartCount} item</p>
+                </div>
+                <button 
+                  onClick={() => setShowCartModal(false)}
+                  className="w-10 h-10 bg-surface-container-high rounded-full flex items-center justify-center text-secondary-variant"
+                >
+                  <span className="material-symbols-outlined">close</span>
+                </button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto no-scrollbar pr-1 -mx-2 px-2">
+                <div className="flex flex-col gap-6 mb-8">
+                  {cart.map((item) => (
+                    <div key={item.id} className="flex gap-4 items-center group">
+                      <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm flex-none">
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-sm font-bold text-on-surface truncate mb-1">{item.name}</h4>
+                        <p className="text-xs font-extrabold text-primary">Rp {(item.price * item.quantity).toLocaleString('id-ID')}</p>
+                      </div>
+                      <div className="flex items-center gap-3 bg-surface-container-low px-3 py-1.5 rounded-2xl">
+                        <button 
+                          onClick={() => updateQuantity(item.id, -1)}
+                          className="w-6 h-6 rounded-lg flex items-center justify-center text-primary-variant hover:bg-surface-container-high transition-colors"
+                        >
+                          <span className="material-symbols-outlined text-[16px]">remove</span>
+                        </button>
+                        <span className="text-xs font-bold w-4 text-center">{item.quantity}</span>
+                        <button 
+                          onClick={() => updateQuantity(item.id, 1)}
+                          className="w-6 h-6 rounded-lg flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors"
+                        >
+                          <span className="material-symbols-outlined text-[16px]">add</span>
+                        </button>
+                      </div>
+                      <button 
+                        onClick={() => removeFromCart(item.id)}
+                        className="material-symbols-outlined text-outline-variant hover:text-error transition-colors p-1"
+                      >
+                        delete
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-outline-variant/10">
+                <div className="flex justify-between items-center mb-6">
+                  <span className="text-sm font-bold text-secondary">Total Tagihan</span>
+                  <span className="text-2xl font-black text-primary">Rp {cartTotal.toLocaleString('id-ID')}</span>
+                </div>
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => setShowCartModal(false)}
+                    className="flex-1 py-4 px-6 rounded-2xl font-bold font-headline text-secondary bg-surface-container-highest hover:bg-surface-container-high transition-all"
+                  >
+                    Tutup
+                  </button>
+                  <button
+                    onClick={() => navigate('/checkout')}
+                    className="flex-[2] bg-primary text-on-primary py-4 px-6 rounded-2xl font-bold font-headline shadow-lg shadow-primary/30 active:scale-95 transition-all"
+                  >
+                    Bayar
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

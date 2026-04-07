@@ -1,10 +1,26 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useStore } from '../store/useStore';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 export default function Layout({ children }) {
-  const { tableNumber } = useStore();
+  const { tableNumber, tableId, resetOrder } = useStore();
   const location = useLocation();
+  const navigate = useNavigate();
   const isAdmin = location.pathname.startsWith('/admin');
+
+  const handleMoveTable = async () => {
+    if (tableId) {
+      try {
+        const tableRef = doc(db, 'tables', tableId);
+        await updateDoc(tableRef, { status: 'available' });
+      } catch (err) {
+        console.error('Error freeing table:', err);
+      }
+    }
+    resetOrder();
+    navigate('/');
+  };
 
   return (
     <div className="min-h-screen bg-background text-on-surface pb-32">
@@ -15,14 +31,24 @@ export default function Layout({ children }) {
         </div>
         <div className="flex items-center gap-3">
           {!isAdmin && tableNumber && (
-            <div className="bg-surface-container-high px-4 py-1.5 rounded-full flex items-center gap-2">
-              <span className="material-symbols-outlined text-sm text-primary">table_restaurant</span>
-              <span className="text-xs font-bold text-on-surface">Meja {tableNumber}</span>
+            <div className="flex items-center gap-2">
+              <button 
+                onClick={handleMoveTable}
+                className="text-[10px] font-bold text-primary uppercase tracking-widest px-3 py-1.5 rounded-full border border-primary/20 hover:bg-primary/5 transition-colors"
+              >
+                Pindah Meja
+              </button>
+              <div className="bg-surface-container-high px-4 py-1.5 rounded-full flex items-center gap-2">
+                <span className="material-symbols-outlined text-sm text-primary">table_restaurant</span>
+                <span className="text-xs font-bold text-on-surface">Meja {tableNumber}</span>
+              </div>
             </div>
           )}
-          <button className="material-symbols-outlined text-primary p-2 rounded-full hover:bg-surface-container-high transition-colors">
-            {isAdmin ? 'account_circle' : 'search'}
-          </button>
+          {isAdmin && (
+            <button className="material-symbols-outlined text-primary p-2 rounded-full hover:bg-surface-container-high transition-colors">
+              account_circle
+            </button>
+          )}
         </div>
       </header>
 
@@ -30,18 +56,10 @@ export default function Layout({ children }) {
         {children}
       </main>
 
-      {!isAdmin && (
+      {!isAdmin && location.pathname === '/' && (
         <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-2 bg-surface/80 backdrop-blur-md rounded-t-3xl shadow-[0_-4px_24px_rgba(27,28,27,0.06)] transition-transform duration-500">
-          {!tableNumber && (
-            <Link to="/" className={`flex flex-col items-center justify-center p-3 transition-all ${location.pathname === '/' ? 'bg-primary text-white rounded-full scale-110 shadow-lg' : 'text-secondary'}`}>
-              <span className="material-symbols-outlined">table_restaurant</span>
-            </Link>
-          )}
-          <Link to="/menu" className={`flex flex-col items-center justify-center p-3 transition-all ${location.pathname === '/menu' ? 'bg-primary text-white rounded-full scale-110 shadow-lg' : 'text-secondary'}`}>
-            <span className="material-symbols-outlined">restaurant_menu</span>
-          </Link>
-          <Link to="/checkout" className={`flex flex-col items-center justify-center p-3 transition-all ${location.pathname === '/checkout' ? 'bg-primary text-white rounded-full scale-110 shadow-lg' : 'text-secondary'}`}>
-            <span className="material-symbols-outlined">shopping_cart</span>
+          <Link to="/" className={`flex flex-col items-center justify-center p-3 transition-all ${location.pathname === '/' ? 'bg-primary text-white rounded-full scale-110 shadow-lg' : 'text-secondary'}`}>
+            <span className="material-symbols-outlined">table_restaurant</span>
           </Link>
         </nav>
       )}
