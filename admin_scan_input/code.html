@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#fed3c7",
+                    "on-secondary-fixed-variant": "#5d4037",
+                    "tertiary-fixed": "#8ef2ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f5f3f1",
+                    "on-secondary-fixed": "#2c160e",
+                    "on-surface-variant": "#59413a",
+                    "outline": "#8d7169",
+                    "on-primary-fixed-variant": "#802a00",
+                    "primary-container": "#ff7135",
+                    "on-error": "#ffffff",
+                    "tertiary": "#006972",
+                    "surface-variant": "#e4e2e0",
+                    "background": "#fbf9f7",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#e0bfb6",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#001f23",
+                    "inverse-surface": "#30302f",
+                    "on-surface": "#1b1c1b",
+                    "on-tertiary-fixed-variant": "#004f56",
+                    "tertiary-container": "#00acbb",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#003a3f",
+                    "surface-tint": "#a83900",
+                    "primary": "#a83900",
+                    "surface": "#fbf9f7",
+                    "secondary-fixed": "#ffdbd0",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#601d00",
+                    "primary-fixed-dim": "#ffb59a",
+                    "on-background": "#1b1c1b",
+                    "surface-container-high": "#eae8e6",
+                    "tertiary-fixed-dim": "#55d8e7",
+                    "error": "#ba1a1a",
+                    "surface-container": "#efedec",
+                    "on-secondary-container": "#795950",
+                    "on-primary-fixed": "#380d00",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#77574d",
+                    "surface-container-highest": "#e4e2e0",
+                    "secondary-fixed-dim": "#e7bdb1",
+                    "surface-dim": "#dbdad8",
+                    "surface-bright": "#fbf9f7",
+                    "inverse-on-surface": "#f2f0ee",
+                    "primary-fixed": "#ffdbcf",
+                    "inverse-primary": "#ffb59a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body antialiased min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-[#fbf9f7] dark:bg-stone-950 flex justify-between items-center px-6 py-4 w-full sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<button class="text-[#a83900] dark:text-[#ff7135] hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors p-2 rounded-full scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-xl font-extrabold text-[#a83900] dark:text-[#ff7135]">Rasa Kurator</h1>
+</div>
+<button class="text-[#a83900] dark:text-[#ff7135] hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors p-2 rounded-full scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined">search</span>
+</button>
+</header>
+<main class="max-w-md mx-auto px-6 pt-6 space-y-8">
+<!-- Welcome Section -->
+<section>
+<p class="text-secondary text-sm font-medium mb-1">Selamat Datang, Admin</p>
+<h2 class="font-headline text-3xl font-bold text-on-surface tracking-tight">Panel Kasir</h2>
+</section>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-6 rounded-xl space-y-2">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+<span class="text-xs font-semibold uppercase tracking-wider">Pesanan</span>
+</div>
+<div class="text-3xl font-headline font-extrabold">128</div>
+<div class="text-[10px] text-tertiary font-medium">+12% dari kemarin</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl space-y-2">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-lg">payments</span>
+<span class="text-xs font-semibold uppercase tracking-wider">Pendapatan</span>
+</div>
+<div class="text-2xl font-headline font-extrabold leading-none pt-1">Rp 4.2M</div>
+<div class="text-[10px] text-tertiary font-medium">+5% dari kemarin</div>
+</div>
+</section>
+<!-- Scanning Action Card -->
+<section class="bg-surface-container-low rounded-[2rem] p-8 text-center space-y-8">
+<div class="space-y-2">
+<h3 class="font-headline text-xl font-bold">Validasi Pembayaran</h3>
+<p class="text-on-surface-variant text-sm px-4 leading-relaxed">Pindai kode QR atau barcode pada struk pelanggan untuk memproses pesanan.</p>
+</div>
+<div class="relative group">
+<!-- Large Scan Button -->
+<button class="bg-primary hover:bg-primary-container text-on-primary w-full aspect-square rounded-full flex flex-col items-center justify-center gap-4 shadow-xl shadow-primary/20 transition-all duration-300 scale-95 active:scale-90">
+<div class="w-24 h-24 rounded-full border-4 border-dashed border-on-primary/30 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</div>
+<span class="font-headline font-bold text-lg tracking-wide uppercase">Scan Barcode</span>
+</button>
+</div>
+<div class="flex items-center gap-4 py-2">
+<div class="h-px flex-1 bg-outline-variant/30"></div>
+<span class="text-xs font-bold text-outline uppercase tracking-widest">Atau</span>
+<div class="h-px flex-1 bg-outline-variant/30"></div>
+</div>
+<!-- Manual Entry -->
+<div class="space-y-4">
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-full px-6 py-4 text-center font-headline font-bold text-primary tracking-widest placeholder:font-normal placeholder:tracking-normal focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Masukkan Kode Bayar" type="text"/>
+</div>
+<button class="w-full bg-secondary text-on-secondary py-4 rounded-full font-bold hover:opacity-90 transition-opacity">
+                    Konfirmasi Kode
+                </button>
+</div>
+</section>
+<!-- Recent Activity Header -->
+<section class="space-y-6 pb-8">
+<div class="flex justify-between items-end">
+<h3 class="font-headline text-lg font-bold">Aktivitas Terakhir</h3>
+<button class="text-primary text-xs font-bold uppercase">Lihat Semua</button>
+</div>
+<div class="space-y-4">
+<!-- Activity Item -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold">#ORD-99211</h4>
+<p class="text-xs text-on-surface-variant">Pembayaran Berhasil • Meja 12</p>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-on-surface">14:20</span>
+<p class="text-[10px] text-primary font-medium">Rp 245.000</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">history</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold">#ORD-99210</h4>
+<p class="text-xs text-on-surface-variant">Pembayaran Berhasil • Meja 04</p>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-on-surface">14:15</span>
+<p class="text-[10px] text-primary font-medium">Rp 112.500</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#fbf9f7]/80 dark:bg-stone-950/80 backdrop-blur-md rounded-t-3xl shadow-[0_-4px_24px_rgba(27,28,27,0.06)]">
+<a class="flex flex-col items-center justify-center text-[#77574d] dark:text-stone-400 p-3 hover:text-[#a83900] dark:hover:text-[#ff7135] transition-all" href="#">
+<span class="material-symbols-outlined mb-1">restaurant</span>
+<span class="font-['Inter'] text-xs font-medium">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#77574d] dark:text-stone-400 p-3 hover:text-[#a83900] dark:hover:text-[#ff7135] transition-all" href="#">
+<span class="material-symbols-outlined mb-1">table_restaurant</span>
+<span class="font-['Inter'] text-xs font-medium">Meja</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#77574d] dark:text-stone-400 p-3 hover:text-[#a83900] dark:hover:text-[#ff7135] transition-all" href="#">
+<span class="material-symbols-outlined mb-1">receipt_long</span>
+<span class="font-['Inter'] text-xs font-medium">Pesanan</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#a83900] text-white rounded-full p-3 scale-110 transition-all duration-300 shadow-lg shadow-primary/30" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="font-['Inter'] text-xs font-medium">Admin</span>
+</a>
+</nav>
+</body></html>

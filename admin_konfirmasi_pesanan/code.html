@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin - Verifikasi Pesanan | Rasa Kurator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#fed3c7",
+                    "on-secondary-fixed-variant": "#5d4037",
+                    "tertiary-fixed": "#8ef2ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f5f3f1",
+                    "on-secondary-fixed": "#2c160e",
+                    "on-surface-variant": "#59413a",
+                    "outline": "#8d7169",
+                    "on-primary-fixed-variant": "#802a00",
+                    "primary-container": "#ff7135",
+                    "on-error": "#ffffff",
+                    "tertiary": "#006972",
+                    "surface-variant": "#e4e2e0",
+                    "background": "#fbf9f7",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#e0bfb6",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#001f23",
+                    "inverse-surface": "#30302f",
+                    "on-surface": "#1b1c1b",
+                    "on-tertiary-fixed-variant": "#004f56",
+                    "tertiary-container": "#00acbb",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#003a3f",
+                    "surface-tint": "#a83900",
+                    "primary": "#a83900",
+                    "surface": "#fbf9f7",
+                    "secondary-fixed": "#ffdbd0",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#601d00",
+                    "primary-fixed-dim": "#ffb59a",
+                    "on-background": "#1b1c1b",
+                    "surface-container-high": "#eae8e6",
+                    "tertiary-fixed-dim": "#55d8e7",
+                    "error": "#ba1a1a",
+                    "surface-container": "#efedec",
+                    "on-secondary-container": "#795950",
+                    "on-primary-fixed": "#380d00",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#77574d",
+                    "surface-container-highest": "#e4e2e0",
+                    "secondary-fixed-dim": "#e7bdb1",
+                    "surface-dim": "#dbdad8",
+                    "surface-bright": "#fbf9f7",
+                    "inverse-on-surface": "#f2f0ee",
+                    "primary-fixed": "#ffdbcf",
+                    "inverse-primary": "#ffb59a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-[#fbf9f7] dark:bg-stone-950 flex justify-between items-center px-6 py-4 w-full docked full-width top-0 sticky z-50">
+<div class="flex items-center gap-4">
+<button class="hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors scale-95 active:opacity-80 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#a83900] dark:text-[#ff7135]">menu</span>
+</button>
+<h1 class="text-xl font-extrabold text-[#a83900] dark:text-[#ff7135] font-['Plus_Jakarta_Sans'] tracking-tight">Rasa Kurator</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors scale-95 active:opacity-80 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#a83900] dark:text-[#ff7135]">search</span>
+</button>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-6 py-8 pb-32">
+<!-- Breadcrumb & Title -->
+<div class="mb-8">
+<p class="text-sm font-medium text-secondary mb-1">Verifikasi Pesanan</p>
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface">Detail Transaksi</h2>
+</div>
+<!-- Bento Grid Info Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+<div class="md:col-span-2 bg-surface-container-lowest p-6 rounded-xl flex flex-col justify-between">
+<div>
+<p class="text-xs uppercase tracking-widest text-on-surface-variant font-bold mb-2">ID Pesanan</p>
+<p class="text-xl font-bold font-headline">#RK-20240502-088</p>
+</div>
+<div class="mt-6 flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-sm">24 Mei 2024, 19:45 WIB</span>
+</div>
+</div>
+<div class="bg-primary-container p-6 rounded-xl text-on-primary-container flex flex-col justify-between">
+<p class="text-xs uppercase tracking-widest font-bold opacity-80 mb-2">Meja</p>
+<p class="text-5xl font-black font-headline">12</p>
+</div>
+</div>
+<!-- Order Items List -->
+<section class="mb-10">
+<div class="flex justify-between items-end mb-6">
+<h3 class="text-lg font-bold">Daftar Pesanan</h3>
+<span class="text-sm font-medium text-secondary">4 Item</span>
+</div>
+<div class="space-y-6">
+<!-- Item 1 -->
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-surface-variant flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="high-end gourmet salad with colorful vegetables and edible flowers on a ceramic plate, cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADwUKMnf5PS3d4Isxko0D4hqliYNKcRdJcUvLZvbyY3lwo7CNzK1Zqaq0b7qjyT0JnfVbzqBr9OI_xd3QccCqBHXPZlsvq_NUYrJAnCz3T28fLhRse2ZVrySwSV6n-1HtcnOF4x8q_m8jLCTsbla1adWJm_0O8O3NF_jfnXMjBcAkRmqj6-lHcPamEdpi9xlFuCC4W62xOVWJZbrpWFVIKMPCKda2Zvp0wtpVUgbakSmO1APSs4sjJlwz932NVNWD5h_S9bG0kx1g"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface">Salad Musim Semi</h4>
+<p class="text-xs text-on-surface-variant">Catatan: Tanpa bawang</p>
+</div>
+<div class="text-right">
+<p class="font-bold">Rp 65.000</p>
+<p class="text-xs text-secondary">x1</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-surface-variant flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="artisan thin crust pizza with fresh basil and melted mozzarella on a wooden peel, warm restaurant lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXYJMl1lAcPqel-gnKfz7934W1XcQSev0PjYtTClLWu-0OwP8BOZra4A-pXWQ8b_Fk4MZSDNNBBOUGGJnbUVSjFTAxkVBpxiiskkBLR_HVN3_-MKrySQb-igiKsRL6jS45m7fejE_uhPw_Q1LWGJtTcVV92WmohOYpWwq1FDAB7wTq6Ecdwtdap-DPCNHMdOLABK8Tlv0L15WqwTOlyCh9615ayJlNPsQKPNhM7ogXpg3NucfJDfvpOq-oYY-4TIkk8AqQl72_VzM"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface">Margherita Signature</h4>
+<p class="text-xs text-on-surface-variant">Ekstra Keju</p>
+</div>
+<div class="text-right">
+<p class="font-bold">Rp 120.000</p>
+<p class="text-xs text-secondary">x1</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-surface-variant flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="minimalist glass of ice latte with coffee layers on a marble surface with soft natural morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC06vwSO3Vcy03NxfUPRW9Xd6HxDqeBpIs-BhYW2JeGXqCN2pJHaCjHP006pZWqDz2oWcx3w_U5rJ8JibI1FnpxbwLk5tNUw2PycLqXp9GJZbRMzHcKdyWeg7nY7UhmCV3LBgGu8QwmkJ1UvGtQL3JwBWp5DiOPE55LPqlcA_dhkk7kPnmisXZWeD-uiNGuv2BfAYca9w89ayel4UdMZsK9fgeHJlw4w22DvJGxMV6_qGRDvm4sIBYfGTBikZaT-SPlfqvGf2-y8yE"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface">Iced Latte Kurator</h4>
+<p class="text-xs text-on-surface-variant">Less Sugar</p>
+</div>
+<div class="text-right">
+<p class="font-bold">Rp 90.000</p>
+<p class="text-xs text-secondary">x2</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Summary & Status -->
+<div class="bg-surface-container-low rounded-3xl p-8 space-y-4">
+<div class="flex justify-between items-center pb-2">
+<span class="text-sm font-medium text-on-surface-variant">Subtotal</span>
+<span class="font-semibold">Rp 275.000</span>
+</div>
+<div class="flex justify-between items-center pb-2">
+<span class="text-sm font-medium text-on-surface-variant">Pajak (10%)</span>
+<span class="font-semibold">Rp 27.500</span>
+</div>
+<div class="flex justify-between items-center pb-6">
+<span class="text-sm font-medium text-on-surface-variant">Biaya Layanan</span>
+<span class="font-semibold">Rp 15.000</span>
+</div>
+<div class="pt-6 flex justify-between items-center">
+<span class="text-lg font-extrabold text-on-surface">Total Pembayaran</span>
+<span class="text-2xl font-black text-primary font-headline">Rp 317.500</span>
+</div>
+<!-- Status Indicator -->
+<div class="pt-6">
+<div class="inline-flex items-center gap-2 bg-secondary-container px-4 py-2 rounded-full">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-sm font-bold text-on-secondary-fixed-variant">Pending</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-10">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-5 rounded-full font-bold text-lg shadow-xl shadow-primary/20 flex items-center justify-center gap-3 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">payments</span>
+                Konfirmasi &amp; Bayar
+            </button>
+<p class="text-center text-xs text-on-surface-variant mt-4 font-medium italic">
+                Pastikan nominal pembayaran telah sesuai dengan yang diterima dari pelanggan.
+            </p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#fbf9f7]/80 dark:bg-stone-950/80 backdrop-blur-md rounded-t-3xl shadow-[0_-4px_24px_rgba(27,28,27,0.06)]">
+<a class="flex flex-col items-center justify-center text-[#77574d] dark:text-stone-400 p-3 hover:text-[#a83900] dark:hover:text-[#ff7135]" href="#">
+<span class="material-symbols-outlined mb-1">restaurant</span>
+<span class="font-['Inter'] text-xs font-medium">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#77574d] dark:text-stone-400 p-3 hover:text-[#a83900] dark:hover:text-[#ff7135]" href="#">
+<span class="material-symbols-outlined mb-1">table_restaurant</span>
+<span class="font-['Inter'] text-xs font-medium">Meja</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#77574d] dark:text-stone-400 p-3 hover:text-[#a83900] dark:hover:text-[#ff7135]" href="#">
+<span class="material-symbols-outlined mb-1">receipt_long</span>
+<span class="font-['Inter'] text-xs font-medium">Pesanan</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#a83900] text-white rounded-full p-3 scale-110 transition-all duration-300 shadow-lg" href="#">
+<span class="material-symbols-outlined mb-1">admin_panel_settings</span>
+<span class="font-['Inter'] text-xs font-medium">Admin</span>
+</a>
+</nav>
+</body></html>

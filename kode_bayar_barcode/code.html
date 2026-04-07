@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#fed3c7",
+                    "on-secondary-fixed-variant": "#5d4037",
+                    "tertiary-fixed": "#8ef2ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f5f3f1",
+                    "on-secondary-fixed": "#2c160e",
+                    "on-surface-variant": "#59413a",
+                    "outline": "#8d7169",
+                    "on-primary-fixed-variant": "#802a00",
+                    "primary-container": "#ff7135",
+                    "on-error": "#ffffff",
+                    "tertiary": "#006972",
+                    "surface-variant": "#e4e2e0",
+                    "background": "#fbf9f7",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#e0bfb6",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#001f23",
+                    "inverse-surface": "#30302f",
+                    "on-surface": "#1b1c1b",
+                    "on-tertiary-fixed-variant": "#004f56",
+                    "tertiary-container": "#00acbb",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#003a3f",
+                    "surface-tint": "#a83900",
+                    "primary": "#a83900",
+                    "surface": "#fbf9f7",
+                    "secondary-fixed": "#ffdbd0",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#601d00",
+                    "primary-fixed-dim": "#ffb59a",
+                    "on-background": "#1b1c1b",
+                    "surface-container-high": "#eae8e6",
+                    "tertiary-fixed-dim": "#55d8e7",
+                    "error": "#ba1a1a",
+                    "surface-container": "#efedec",
+                    "on-secondary-container": "#795950",
+                    "on-primary-fixed": "#380d00",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#77574d",
+                    "surface-container-highest": "#e4e2e0",
+                    "secondary-fixed-dim": "#e7bdb1",
+                    "surface-dim": "#dbdad8",
+                    "surface-bright": "#fbf9f7",
+                    "inverse-on-surface": "#f2f0ee",
+                    "primary-fixed": "#ffdbcf",
+                    "inverse-primary": "#ffb59a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .qr-gradient {
+            background: linear-gradient(135deg, #a83900 0%, #ff7135 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen">
+<!-- Top Navigation -->
+<nav class="bg-[#fbf9f7] dark:bg-stone-950 flex justify-between items-center px-6 py-4 w-full sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<button class="text-[#a83900] transition-transform active:opacity-80 scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-[#a83900] text-xl">Status Pesanan</h1>
+</div>
+<button class="text-[#77574d] hover:bg-stone-200/50 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</nav>
+<main class="max-w-md mx-auto px-6 pt-8 pb-32">
+<!-- Status Header -->
+<div class="text-center mb-8">
+<div class="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full mb-4">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+<span class="text-xs font-semibold uppercase tracking-wider">Sedang Disiapkan</span>
+</div>
+<h2 class="font-headline text-2xl font-extrabold text-on-surface mb-2">Hampir Selesai!</h2>
+<p class="text-on-surface-variant text-sm">Pesanan Anda telah diterima dan sedang diproses oleh kru kami.</p>
+</div>
+<!-- Payment Ticket Card -->
+<div class="relative bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-[0_24px_48px_-12px_rgba(168,57,0,0.08)]">
+<!-- Decorative Cutouts for Ticket Effect -->
+<div class="absolute top-1/2 -left-4 w-8 h-8 bg-surface rounded-full -translate-y-1/2"></div>
+<div class="absolute top-1/2 -right-4 w-8 h-8 bg-surface rounded-full -translate-y-1/2"></div>
+<div class="p-8 flex flex-col items-center">
+<!-- Barcode / QR Section -->
+<div class="w-full aspect-square bg-surface-container-low rounded-3xl p-6 flex flex-col items-center justify-center mb-6">
+<div class="w-full h-full relative group">
+<!-- Simulated Barcode/QR with Design Elements -->
+<img class="w-full h-full object-contain opacity-90" data-alt="high contrast minimalist QR code for digital payment on white background with clean sharp edges" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAunHNyIYC_8MvZ1UYqTpqVr6m5v3HN2E-3jOUqgTpvNkhGCNz1qpQaxuN_P1_H1iyONlRWDw6wjnLWzaDCXHZxb_YeV1aASbpAomC6kcGL0CeSH7mdYYwf2Kq4l2LVUXtxBpPfJqlFVJgsinkmKQUpZIkuLSkARp1fRR-fTVks7xvHQMIKtLKtOkjW63RBd8ZBXrczeF1VxspPy1HlsFFuzT1SsH6rCn7jqRUe2d4a69xWinQ0Y6_PJGiN99zW5G56pIJc4qftjW8"/>
+</div>
+</div>
+<!-- 6-Digit Payment Code -->
+<div class="text-center mb-2">
+<p class="text-xs font-medium text-on-surface-variant uppercase tracking-[0.2em] mb-2">Kode Pembayaran</p>
+<div class="flex gap-2 justify-center">
+<span class="font-headline text-4xl font-black text-primary tracking-widest">ABC-123</span>
+</div>
+</div>
+<p class="text-secondary font-medium text-sm mt-4 text-center">Tunjukkan ke kasir untuk bayar</p>
+</div>
+<!-- Ticket Divider (Dashed) -->
+<div class="px-8 flex items-center gap-2 py-2">
+<div class="flex-1 h-[1px] border-t-2 border-dashed border-outline-variant opacity-30"></div>
+</div>
+<!-- Order Details Section -->
+<div class="p-8 bg-surface-container-lowest">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="text-xs text-on-surface-variant font-medium mb-1">ID Pesanan</p>
+<p class="font-headline font-bold text-on-surface">#RK-992834</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-on-surface-variant font-medium mb-1">Total Bayar</p>
+<p class="font-headline font-extrabold text-xl text-primary">Rp 142.500</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">2x Nasi Goreng Spesial</span>
+<span class="font-semibold text-on-surface">Rp 84.000</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">1x Es Teh Manis Jumbo</span>
+<span class="font-semibold text-on-surface">Rp 12.000</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">1x Sate Ayam (10 Tusuk)</span>
+<span class="font-semibold text-on-surface">Rp 46.500</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-8 space-y-3">
+<button class="w-full bg-primary text-white py-4 rounded-full font-headline font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl">download</span>
+                Simpan Tiket
+            </button>
+<button class="w-full bg-surface-container-high text-on-surface py-4 rounded-full font-headline font-bold active:scale-95 transition-transform">
+                Batalkan Pesanan
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#fbf9f7]/80 dark:bg-stone-950/80 backdrop-blur-md shadow-[0_-4px_24px_rgba(27,28,27,0.06)] rounded-t-3xl">
+<a class="flex flex-col items-center justify-center text-[#77574d] dark:text-stone-400 p-3 hover:text-[#a83900] transition-all" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-['Inter'] text-xs font-medium mt-1">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#77574d] dark:text-stone-400 p-3 hover:text-[#a83900] transition-all" href="#">
+<span class="material-symbols-outlined">table_restaurant</span>
+<span class="font-['Inter'] text-xs font-medium mt-1">Meja</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#a83900] text-white rounded-full p-3 scale-110 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="hidden">Pesanan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#77574d] dark:text-stone-400 p-3 hover:text-[#a83900] transition-all" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-['Inter'] text-xs font-medium mt-1">Admin</span>
+</a>
+</div>
+</body></html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rasa Kurator - Menu Utama</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#fed3c7",
+                    "on-secondary-fixed-variant": "#5d4037",
+                    "tertiary-fixed": "#8ef2ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f5f3f1",
+                    "on-secondary-fixed": "#2c160e",
+                    "on-surface-variant": "#59413a",
+                    "outline": "#8d7169",
+                    "on-primary-fixed-variant": "#802a00",
+                    "primary-container": "#ff7135",
+                    "on-error": "#ffffff",
+                    "tertiary": "#006972",
+                    "surface-variant": "#e4e2e0",
+                    "background": "#fbf9f7",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#e0bfb6",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#001f23",
+                    "inverse-surface": "#30302f",
+                    "on-surface": "#1b1c1b",
+                    "on-tertiary-fixed-variant": "#004f56",
+                    "tertiary-container": "#00acbb",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#003a3f",
+                    "surface-tint": "#a83900",
+                    "primary": "#a83900",
+                    "surface": "#fbf9f7",
+                    "secondary-fixed": "#ffdbd0",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#601d00",
+                    "primary-fixed-dim": "#ffb59a",
+                    "on-background": "#1b1c1b",
+                    "surface-container-high": "#eae8e6",
+                    "tertiary-fixed-dim": "#55d8e7",
+                    "error": "#ba1a1a",
+                    "surface-container": "#efedec",
+                    "on-secondary-container": "#795950",
+                    "on-primary-fixed": "#380d00",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#77574d",
+                    "surface-container-highest": "#e4e2e0",
+                    "secondary-fixed-dim": "#e7bdb1",
+                    "surface-dim": "#dbdad8",
+                    "surface-bright": "#fbf9f7",
+                    "inverse-on-surface": "#f2f0ee",
+                    "primary-fixed": "#ffdbcf",
+                    "inverse-primary": "#ffb59a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-panel {
+            background: rgba(251, 249, 247, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-40">
+<!-- Top Navigation Shell -->
+<header class="sticky top-0 z-50 bg-[#fbf9f7] dark:bg-stone-950 flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#a83900] dark:text-[#ff7135] hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors p-2 rounded-full">menu</button>
+<h1 class="text-xl font-extrabold text-[#a83900] dark:text-[#ff7135] font-['Plus_Jakarta_Sans'] tracking-tight">Rasa Kurator</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-surface-container-high px-4 py-1.5 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">table_restaurant</span>
+<span class="text-xs font-bold text-on-surface">Meja 12</span>
+</div>
+<button class="material-symbols-outlined text-[#a83900] dark:text-[#ff7135] hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-colors p-2 rounded-full">search</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 mt-6">
+<!-- Hero Search Section -->
+<div class="mb-10">
+<h2 class="text-4xl font-extrabold tracking-tight mb-6">Pilih menu <br/><span class="text-primary">favorit Anda</span></h2>
+<div class="relative max-w-2xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-highest border-none rounded-2xl focus:ring-2 focus:ring-primary transition-all" placeholder="Cari masakan, minuman, atau cemilan..." type="text"/>
+</div>
+</div>
+<!-- Categories -->
+<section class="mb-12">
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+<button class="flex-none bg-primary text-on-primary px-8 py-3 rounded-full font-semibold shadow-lg shadow-primary/20">Semua</button>
+<button class="flex-none bg-surface-container-lowest text-on-surface-variant px-8 py-3 rounded-full font-medium hover:bg-surface-container-high transition-colors">Makanan</button>
+<button class="flex-none bg-surface-container-lowest text-on-surface-variant px-8 py-3 rounded-full font-medium hover:bg-surface-container-high transition-colors">Minuman</button>
+<button class="flex-none bg-surface-container-lowest text-on-surface-variant px-8 py-3 rounded-full font-medium hover:bg-surface-container-high transition-colors">Cemilan</button>
+</div>
+</section>
+<!-- Menu Grid: Bento Inspired (Updated to 2 columns on mobile) -->
+<section class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+<!-- Makanan Item 1 -->
+<div class="group relative bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="aspect-square overflow-hidden">
+<img alt="top view of a vibrant healthy bowl with salmon, avocado, edamame and quinoa on a minimalist wooden table" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7U5uviaDqov2tA_Pv8XmlgUodWjzNd-GkRMrQQr9Yj_c3ttKXvJ0BwXneFxrnDlrJFoiYaw5557LTJqziqnzsLWzhebsaBykv1B4dLcMmUrGOvwkOvK8ikrv7cP54GOrP_ewMy1JYUIIqK6a7GUJ2RzWNoU6MvJGRvdM2Mf-2zDC15-PSpRkyATIQyQMTIy94SqJIRGqDnWNDGNka3SnRafQcaGYIKeUWQYTShHNXyW1RzMKgyKj0iRPUx5ovP3sWM_6cFZGrbBw"/>
+</div>
+<div class="p-4 md:p-6">
+<div class="flex flex-col gap-1 mb-2">
+<span class="w-fit bg-tertiary-container/10 text-on-tertiary-container text-[8px] md:text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded">Sehat</span>
+<h3 class="text-sm md:text-xl font-bold text-on-surface line-clamp-1">Salmon Quinoa Bowl</h3>
+</div>
+<p class="hidden md:block text-sm text-secondary mb-6 line-clamp-2">Salmon panggang segar dengan quinoa organik, alpukat, dan saus lemon madu.</p>
+<div class="flex justify-between items-center">
+<span class="text-sm md:text-lg font-extrabold text-primary">Rp 85rb</span>
+<button class="w-8 h-8 md:w-12 md:h-12 bg-primary text-on-primary rounded-full flex items-center justify-center hover:scale-110 transition-transform active:scale-95 shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-sm md:text-base">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Makanan Item 2 -->
+<div class="group relative bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="aspect-square overflow-hidden">
+<img alt="fresh green salad bowl with tomatoes, cucumbers, and balsamic glaze in a white ceramic bowl" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB3wuNF7jYN0mEcatieDVAPR7sHHfXj1lFw3FF906kq5a2o1D6QtJJvCxrI0yB3Kn3v59Sxfm1z-bjMcZSlr_-h3nne_nraTO2X0122C35MDoA9VITFvI3lZZOvoYqR6lOeHVqF5z92wq7eo1jRWRKvUKPxncN_-tpI_ajit0plaOozPyFJBKgU1K7LL8HSx9AQYrwkJdPX5OzudydxBH4--L9QKDclL-8x8omdx4V0wtgu7HidAebFlJzeCmbhtIX1aHuWdNW9WM"/>
+</div>
+<div class="p-4 md:p-6">
+<div class="flex flex-col gap-1 mb-2">
+<span class="w-fit bg-secondary-container/30 text-on-secondary-container text-[8px] md:text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded">Populer</span>
+<h3 class="text-sm md:text-xl font-bold text-on-surface line-clamp-1">Salad Kebun Segar</h3>
+</div>
+<p class="hidden md:block text-sm text-secondary mb-6 line-clamp-2">Campuran sayuran hijau organik dengan tomat ceri dan dressing balsamic khas Rasa Kurator.</p>
+<div class="flex justify-between items-center">
+<span class="text-sm md:text-lg font-extrabold text-primary">Rp 45rb</span>
+<button class="w-8 h-8 md:w-12 md:h-12 bg-primary text-on-primary rounded-full flex items-center justify-center hover:scale-110 transition-transform active:scale-95 shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-sm md:text-base">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Minuman Item 1 -->
+<div class="group relative bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="aspect-square overflow-hidden">
+<img alt="expertly crafted latte with heart-shaped foam art in a ceramic cup on a rustic cafe table" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkeeQDmdLm-KpkR3UutNt_djMTPL2XQ05XOwEVGmKBeXGW92dRLJqxEwryeupbjaZJnC5Mfn1NdkeiAYSIxVJBTXq9YQ0byMggJjeoI4XYqvmhdsw-WDFnlZsJwHa178Guupt8ob_6x8vrQEQMJ2dIXBr70xrJ4IMNyd3qqVd2ZQWOZ1gbK9ib04kSrdUYkkKGX4okSgpr17pK5BvEy9C0M2g0HzWtxpGl44gH_EYfmo508KX4vWt9lrb-WrM4L_jmV4t6QYYqQNA"/>
+</div>
+<div class="p-4 md:p-6">
+<div class="flex flex-col gap-1 mb-2">
+<span class="w-fit bg-outline-variant/30 text-on-surface-variant text-[8px] md:text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded">Kopi</span>
+<h3 class="text-sm md:text-xl font-bold text-on-surface line-clamp-1">Signature Latte</h3>
+</div>
+<p class="hidden md:block text-sm text-secondary mb-6 line-clamp-2">Biji kopi arabika pilihan dengan susu creamy dan sentuhan karamel artisan.</p>
+<div class="flex justify-between items-center">
+<span class="text-sm md:text-lg font-extrabold text-primary">Rp 38rb</span>
+<button class="w-8 h-8 md:w-12 md:h-12 bg-primary text-on-primary rounded-full flex items-center justify-center hover:scale-110 transition-transform active:scale-95 shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-sm md:text-base">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Cemilan Item 1 -->
+<div class="group relative bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="aspect-square overflow-hidden">
+<img alt="crispy golden potato wedges served with spicy dipping sauce in a small ceramic bowl" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvSdNW6pIZrQe-71twL4_GIzdUpkV-iD7mQvZgH0V9um476U4x1jpudWugc7tX-7mNcWFGDvd6ckSbNkutUu_iQF3ieN-RQkk3u82z4jXc1YEpg6UYL_pqepgyp2ouXz-hhMCMSUl3K7PwIrqPKzhO3uFWuP_uDsAb-rbb_UmjVhTgiyDJcUIxMBpoqoRpE8XJeTo7ScbZ2QU-bj45LQR4QEhth8YZv5MNeNQ0SECW1i5DHayA7WghAhOg6-29QDzp0IBBjVn0U7w"/>
+</div>
+<div class="p-4 md:p-6">
+<div class="flex flex-col gap-1 mb-2">
+<span class="w-fit bg-surface-container-high text-on-surface-variant text-[8px] md:text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded">Cemilan</span>
+<h3 class="text-sm md:text-xl font-bold text-on-surface line-clamp-1">Potato Wedges</h3>
+</div>
+<p class="hidden md:block text-sm text-secondary mb-6 line-clamp-2">Kentang potong tebal digoreng hingga renyah dengan bumbu rempah rahasia.</p>
+<div class="flex justify-between items-center">
+<span class="text-sm md:text-lg font-extrabold text-primary">Rp 32rb</span>
+<button class="w-8 h-8 md:w-12 md:h-12 bg-primary text-on-primary rounded-full flex items-center justify-center hover:scale-110 transition-transform active:scale-95 shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-sm md:text-base">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Makanan Item 3 -->
+<div class="group relative bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="aspect-square overflow-hidden">
+<img alt="authentic italian pizza with buffalo mozzarella, basil leaves and rich tomato sauce on a stone oven background" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_rOWoI6Kk0CguTvlje6U85llQfU8d0LGQof9biZi4cddjODFe4CBpnuCjQKykEWRGbZ6jEqPZo_Er7LX1M1-NGw46yeLCjn_UEBGI9s8tUxjWbUgtvxHMtDZHc8u51yGUDiB9qayMqnC9RaOU_gKS0r3QQ-1RQNtdLmxI3SXXVuZGJ1swrvnlsXBBrM5JNpVj2cO0Moy7944N0qtERmGk3DKTNukYcIvzawYxHrhYq8vQ_Y3moUAibsoJCbCNkGBh0VPpHUr8-bU"/>
+</div>
+<div class="p-4 md:p-6">
+<div class="flex flex-col gap-1 mb-2">
+<span class="w-fit bg-primary-container/20 text-on-primary-container text-[8px] md:text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded">Andalan</span>
+<h3 class="text-sm md:text-xl font-bold text-on-surface line-clamp-1">Margherita Pizza</h3>
+</div>
+<p class="hidden md:block text-sm text-secondary mb-6 line-clamp-2">Pizza tipis ala Italia dengan keju mozzarella premium dan daun basil segar.</p>
+<div class="flex justify-between items-center">
+<span class="text-sm md:text-lg font-extrabold text-primary">Rp 92rb</span>
+<button class="w-8 h-8 md:w-12 md:h-12 bg-primary text-on-primary rounded-full flex items-center justify-center hover:scale-110 transition-transform active:scale-95 shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-sm md:text-base">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Minuman Item 2 -->
+<div class="group relative bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="aspect-square overflow-hidden">
+<img alt="refreshing iced fruit tea with slices of orange, lemon and mint leaves in a tall elegant glass" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYz9MZ3NTEiFGrTpQm5NwcCnCOJGkHbB63r7TKgrUwcdsqz1vW5vX7AcBrQDBmQOC3CLTMp0Fc4U_O2DouFaTb_d7tMmRHv8frDTa7NSB-ykzjIsDXybzTxqo6PRYCzG9LpC-DmlbzEV229Uda7eNNV0Oq1hy7_g6KqNxnCqsIVvsmn5ukGbEfpLVMvH4irgIkOFzUDmadumLcH7V46qpMgTPdTbSykcyTtLbkBzOqA21gUPLuqbpjZeooIxlPIZSiO4EAnwRKy14"/>
+</div>
+<div class="p-4 md:p-6">
+<div class="flex flex-col gap-1 mb-2">
+<span class="w-fit bg-tertiary/10 text-tertiary text-[8px] md:text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded">Dingin</span>
+<h3 class="text-sm md:text-xl font-bold text-on-surface line-clamp-1">Tropical Fruit Tea</h3>
+</div>
+<p class="hidden md:block text-sm text-secondary mb-6 line-clamp-2">Teh segar dengan irisan buah tropis asli yang memberikan sensasi menyegarkan.</p>
+<div class="flex justify-between items-center">
+<span class="text-sm md:text-lg font-extrabold text-primary">Rp 28rb</span>
+<button class="w-8 h-8 md:w-12 md:h-12 bg-primary text-on-primary rounded-full flex items-center justify-center hover:scale-110 transition-transform active:scale-95 shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-sm md:text-base">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Cart Preview Bar -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 w-[90%] max-w-lg z-40">
+<div class="glass-panel rounded-3xl p-4 shadow-[0_8px_32px_rgba(0,0,0,0.1)] flex items-center justify-between border border-white/20">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-primary text-3xl">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-on-surface text-surface text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+</div>
+<div class="hidden sm:block">
+<p class="text-xs text-secondary font-medium uppercase tracking-tight">Total Pesanan</p>
+<p class="text-lg font-extrabold text-on-surface">Rp 168.000</p>
+</div>
+<div class="sm:hidden">
+<p class="text-base font-extrabold text-on-surface">Rp 168rb</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-4 sm:px-6 py-3 rounded-2xl font-bold text-sm flex items-center gap-2 hover:scale-105 transition-transform active:scale-95">
+<span class="hidden sm:inline">Bayar Sekarang</span>
+<span class="sm:hidden">Bayar</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#fbf9f7]/80 dark:bg-stone-950/80 backdrop-blur-md rounded-t-3xl shadow-[0_-4px_24px_rgba(27,28,27,0.06)]">
+<a class="flex flex-col items-center justify-center bg-[#a83900] text-white rounded-full p-3 scale-110 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">table_restaurant</span>
+<span class="font-['Inter'] text-xs font-medium mt-1">Meja</span>
+</a>
+</nav>
+</body></html>
