@@ -69,6 +69,11 @@ export default function Layout({ children }) {
               </div>
             </div>
           )}
+          {!isAdmin && !tableNumber && (
+            <Link to="/admin/login" className="material-symbols-outlined text-secondary/30 hover:text-primary p-2 transition-colors">
+              admin_panel_settings
+            </Link>
+          )}
           {isAdmin && (
             <button className="material-symbols-outlined text-primary p-2 rounded-full hover:bg-surface-container-high transition-colors">
               account_circle
