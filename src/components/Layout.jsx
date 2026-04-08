@@ -1,6 +1,7 @@
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useStore } from '../store/useStore';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
 export default function Layout({ children }) {
@@ -8,6 +9,26 @@ export default function Layout({ children }) {
   const location = useLocation();
   const navigate = useNavigate();
   const isAdmin = location.pathname.startsWith('/admin');
+
+  const [restaurantName, setRestaurantName] = useState('');
+  const [restaurantAddress, setRestaurantAddress] = useState('');
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const docRef = doc(db, 'settings', 'restaurant');
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setRestaurantName(data.name || '');
+          setRestaurantAddress(data.address || '');
+        }
+      } catch (err) {
+        console.error('Error fetching restaurant settings:', err);
+      }
+    };
+    fetchSettings();
+  }, [location.pathname]);
 
   const handleMoveTable = async () => {
     if (tableId) {
@@ -24,10 +45,14 @@ export default function Layout({ children }) {
 
   return (
     <div className="min-h-screen bg-background text-on-surface pb-32">
-      <header className="sticky top-0 z-50 bg-surface/80 backdrop-blur-md flex justify-between items-center px-6 py-4 w-full border-b border-outline-variant/10">
-        <div className="flex items-center gap-4">
-          <button className="material-symbols-outlined text-primary p-2 rounded-full hover:bg-surface-container-high transition-colors">menu</button>
-          <Link to="/" className="text-xl font-extrabold text-primary font-headline tracking-tight">Rasa Kurator</Link>
+      <header className="sticky top-0 z-50 bg-surface/80 backdrop-blur-md flex justify-between items-center px-6 py-4 w-full">
+        <div className="flex flex-col">
+          <Link to="/" className="text-xl font-extrabold text-primary font-headline tracking-tight leading-tight">
+            {restaurantName || 'Nama Restoran'}
+          </Link>
+          <span className="text-[10px] text-secondary font-medium leading-tight mt-0.5">
+            {restaurantAddress || ''}
+          </span>
         </div>
         <div className="flex items-center gap-3">
           {!isAdmin && tableNumber && (
@@ -65,15 +90,18 @@ export default function Layout({ children }) {
       )}
 
       {isAdmin && location.pathname !== '/admin/login' && (
-        <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-2 bg-surface/80 backdrop-blur-md rounded-t-3xl shadow-[0_-4px_24px_rgba(27,28,27,0.06)]">
-          <Link to="/admin/scan" className={`flex flex-col items-center justify-center p-3 transition-all ${location.pathname === '/admin/scan' ? 'bg-primary text-white rounded-full scale-110 shadow-lg' : 'text-secondary'}`}>
-            <span className="material-symbols-outlined">qr_code_scanner</span>
-          </Link>
-          <Link to="/admin/menu" className={`flex flex-col items-center justify-center p-3 transition-all ${location.pathname === '/admin/menu' ? 'bg-primary text-white rounded-full scale-110 shadow-lg' : 'text-secondary'}`}>
-            <span className="material-symbols-outlined">inventory_2</span>
+        <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-8 pb-8 pt-2 bg-surface/80 backdrop-blur-md rounded-t-3xl shadow-[0_-4px_24px_rgba(27,28,27,0.06)]">
+          <Link to="/admin/orders" className={`flex flex-col items-center justify-center p-3 transition-all ${location.pathname === '/admin/orders' ? 'bg-primary text-white rounded-full scale-110 shadow-lg' : 'text-secondary'}`}>
+            <span className="material-symbols-outlined">receipt_long</span>
           </Link>
           <Link to="/admin/tables" className={`flex flex-col items-center justify-center p-3 transition-all ${location.pathname === '/admin/tables' ? 'bg-primary text-white rounded-full scale-110 shadow-lg' : 'text-secondary'}`}>
             <span className="material-symbols-outlined">grid_view</span>
+          </Link>
+          <Link to="/admin/reports" className={`flex flex-col items-center justify-center p-3 transition-all ${location.pathname === '/admin/reports' ? 'bg-primary text-white rounded-full scale-110 shadow-lg' : 'text-secondary'}`}>
+            <span className="material-symbols-outlined">bar_chart</span>
+          </Link>
+          <Link to="/admin/settings" className={`flex flex-col items-center justify-center p-3 transition-all ${location.pathname === '/admin/settings' ? 'bg-primary text-white rounded-full scale-110 shadow-lg' : 'text-secondary'}`}>
+            <span className="material-symbols-outlined">settings</span>
           </Link>
         </nav>
       )}

@@ -7,9 +7,10 @@ import OrderResult from './pages/visitor/OrderResult';
 
 // Admin Pages
 import AdminLogin from './pages/admin/Login';
-import AdminScanner from './pages/admin/Scanner';
-import AdminMenu from './pages/admin/Menu';
 import AdminTables from './pages/admin/Tables';
+import AdminOrders from './pages/admin/Orders';
+import AdminReports from './pages/admin/Reports';
+import AdminSettings from './pages/admin/Settings';
 import Setup from './pages/admin/Setup';
 import { useStore } from './store/useStore';
 
@@ -34,11 +35,12 @@ function App() {
 
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin" element={<Navigate to="/admin/scan" replace />} />
-          <Route path="/admin/scan" element={<AdminScanner />} />
-          <Route path="/admin/menu" element={<AdminMenu />} />
+          <Route path="/admin/orders" element={<AdminOrders />} />
+          <Route path="/admin/reports" element={<AdminReports />} />
           <Route path="/admin/tables" element={<AdminTables />} />
-          <Route path="/admin/setup" element={<Setup />} />
+          <Route path="/admin/settings" element={<AdminSettings />} />
+          <Route path="/admin/setup" element={<Navigate to="/admin/tables" replace />} />
+          <Route path="/admin/menu" element={<Navigate to="/admin/tables" replace />} />
           
           {/* Fallback */}
           <Route path="*" element={<Navigate to="/" replace />} />

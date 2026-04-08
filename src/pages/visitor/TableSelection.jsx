@@ -5,6 +5,11 @@ import { db } from '../../firebase';
 import { useStore } from '../../store/useStore';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Auto capitalize setiap kata
+const toTitleCase = (str) => {
+  return str.replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
 export default function TableSelection() {
   const navigate = useNavigate();
   const { setTableNumber, setTableId, setUserInfo } = useStore();
@@ -155,7 +160,7 @@ export default function TableSelection() {
                     required
                     type="text"
                     value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    onChange={(e) => setFormData({...formData, name: toTitleCase(e.target.value)})}
                     placeholder="Contoh: Budi Santoso"
                     className="w-full bg-surface-container-highest border-none rounded-2xl py-4 px-6 focus:ring-2 focus:ring-primary transition-all"
                   />
@@ -165,8 +170,12 @@ export default function TableSelection() {
                   <input
                     required
                     type="tel"
+                    inputMode="numeric"
                     value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/[^0-9]/g, '');
+                      setFormData({...formData, phone: val});
+                    }}
                     placeholder="0812xxxx"
                     className="w-full bg-surface-container-highest border-none rounded-2xl py-4 px-6 focus:ring-2 focus:ring-primary transition-all"
                   />
