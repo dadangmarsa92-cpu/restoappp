@@ -15,7 +15,7 @@ export default function AdminLogin() {
       // Menambahkan domain secara internal agar Firebase Auth tetap jalan
       const loginEmail = email.includes('@') ? email : `${email}@admin.com`;
       await signInWithEmailAndPassword(auth, loginEmail, password);
-      navigate('/admin/scan');
+      navigate('/admin/orders');
     } catch (err) {
       setError('Username atau password salah. Coba lagi.');
     }
